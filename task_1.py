@@ -1,0 +1,11 @@
+import pandas as pd 
+import random
+ 
+lst = ['robot'] * 10
+lst += ['human'] * 10
+random.shuffle(lst)
+data = pd.DataFrame({'whoAmI': lst})
+print(data)
+
+data = pd.get_dummies(data.melt(ignore_index=False).value).groupby(level=0).max()
+print(data)
